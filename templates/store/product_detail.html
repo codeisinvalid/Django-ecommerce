@@ -76,9 +76,18 @@
         <div class = "row"><div class="btn btn-danger">Out of stock</div></div>
         
         {% else %}
+          {% if in_cart %}
+          <button class="btn  btn-success"> <span class="text">Added to Cart</span> <i class="fas fa-check"></i>  </button>
+          <a href="{% url 'cart' %}" class="btn  btn-outline-primary"> <span class="text">View Cart</span> <i class="fas fa-eye"></i>  </a>
+
+
+
+
+          {% else %}
 
         <a href="{% url 'add_cart' single_product.id %}" class="btn  btn-primary"> <span class="text">Add to cart</span> <i class="fas fa-shopping-cart"></i>  </a>
 
+        {% endif %}
         {% endif %}
     </article> <!-- product-info-aside .// -->
             </main> <!-- col.// -->
