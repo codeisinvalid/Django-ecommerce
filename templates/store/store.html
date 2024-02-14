@@ -8,7 +8,14 @@
 <!-- ========================= SECTION PAGETOP ========================= -->
 <section class="section-pagetop bg">
     <div class="container">
+        {% if 'search' in request.path %}
+        <h2 class="title-page">Search results</h2>
+        
+        {% elif 'category' in request.path %}
+        <h2 class="title-page"> Category results </h2>
+        {% else %}
         <h2 class="title-page">Our Store</h2>
+        {% endif %}
         
     </div> <!-- container //  -->
 </section>
@@ -128,6 +135,7 @@
     </header><!-- sect-heading -->
     
     <div class="row">
+        {% if products %}
         {% for product in products %}
         <div class="col-md-4">
             <figure class="card card-product-grid">
@@ -149,34 +157,10 @@
             </figure>
         </div> <!-- col.// -->
         {% endfor %}
-    
-        
-    
-        
-    
-    
-        
-    
-    
-        
-    
-        {% comment %} <div class="col-md-4">
-            <figure class="card card-product-grid">
-                <div class="img-wrap"> 
-                    <img src="images/items/1.jpg">
-                    
-                </div> <!-- img-wrap.// -->
-                <figcaption class="info-wrap">
-                    <div class="fix-height">
-                        <a href="./product-detail.html" class="title">Product name goes here just for demo item</a>
-                        <div class="price-wrap mt-2">
-                            <span class="price">$1280</span>
-                        </div> <!-- price-wrap.// -->
-                    </div>
-                    <a href="#" class="btn btn-block btn-primary">Add to cart </a>	
-                </figcaption>
-            </figure>
-        </div> <!-- col.// --> {% endcomment %}
+        {% else %}
+        <div class="col-md-12"><h2 class="text-center">No results found</h2></div>
+        {% endif %}
+
     </div> <!-- row end.// -->
     
     
