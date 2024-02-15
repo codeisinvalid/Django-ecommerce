@@ -21,7 +21,8 @@
             </aside>
             <main class="col-md-6 border-left">
 
-              <form action="{% url 'add_cart' single_product.id %}" method="GET">
+              <form action="{% url 'add_cart' single_product.id %}" method="POST">
+                {% csrf_token %}
     <article class="content-body">
     
     <h2 class="title">{{ single_product.product_name }}</h2>
@@ -39,7 +40,7 @@
             <div class="item-option-select">
                 <h6>Choose Color</h6>
                 <select name="color" class="form-control" required>
-                    <option value="" disabled selected>Choose color</option>
+                    <option value="" disabled selected>Select color</option>
                     {% for i in single_product.variation_set.colors %}
                   <option value="{{ i.variation_value | lower }}">{{ i.variation_value | capfirst }}</option>
                   {% endfor %}
@@ -50,8 +51,8 @@
 
         <div class="row-sm">
             <div class="item-option-select">
-                <h6>Select Size</h6>
-                <select name="color" class="form-control" required>
+                <h6>Choose Size</h6>
+                <select name="size" class="form-control" required>
                     <option value="" disabled selected>Select size</option>
                     {% for i in single_product.variation_set.sizes %}
                   <option value="{{ i.variation_value | lower }}">{{ i.variation_value | capfirst }}</option>
@@ -67,20 +68,17 @@
         <div class = "row"><div class="btn btn-danger">Out of stock</div></div>
         
         {% else %}
-          {% if in_cart %}
           <div class="button-container">
-          <button class="btn  btn-success "> <span class="text">Added to Cart</span> <i class="fas fa-check"></i>  </button>
-          <a href="{% url 'cart' %}" class="btn  btn-outline-primary"> <span class="text">View Cart</span> <i class="fas fa-eye"></i>  </a>
+          {% comment %} <button class="btn  btn-success "> <span class="text">Added to Cart</span> <i class="fas fa-check"></i>  </button>
+          <a href="{% url 'cart' %}" class="btn  btn-outline-primary"> <span class="text">View Cart</span> <i class="fas fa-eye"></i>  </a> {% endcomment %}
           </div>
 
 
 
 
-          {% else %}
 
         <button type="submit" class="btn  btn-primary"> <span class="text">Add to cart</span> <i class="fas fa-shopping-cart"></i>  </button>
 
-        {% endif %}
         {% endif %}
     </article> <!-- product-info-aside .// -->
   </form>
