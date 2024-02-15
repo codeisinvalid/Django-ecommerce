@@ -588,6 +588,17 @@ pre code {
   margin-left: -10px;
 }
 
+.margin-left{
+  margin-left: 80px !important;
+}
+
+.button-container{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  
+}
+
 .no-gutters {
   margin-right: 0;
   margin-left: 0;
