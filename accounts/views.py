@@ -3,9 +3,10 @@ from .forms import RegistrationForm
 from .models import Account
 from django.contrib import messages
 from django.contrib import auth
+from django.contrib.auth.decorators import login_required
 
 def register(request):
-    if request.method=="POST":
+    if request.method=="POST": 
         form = RegistrationForm(request.POST)
         if form.is_valid():
             first_name = form.cleaned_data['first_name']
@@ -46,6 +47,9 @@ def login(request):
 
     return render(request, 'accounts/login.html')
 
+@login_required(login_url = 'login')
 def logout(request):
-    return
+    auth.logout(request)
+    messages.success(request, 'Successfully Logged out')
+    return redirect('login')
 
