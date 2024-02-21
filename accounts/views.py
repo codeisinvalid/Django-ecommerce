@@ -135,3 +135,7 @@ def forgotPassword(request):
 
     return render(request, 'accounts/forgotPassword.html')
 
+
+def resetpassword_validate(request, uidb64, token):
+    return HttpResponse("okay")
+
