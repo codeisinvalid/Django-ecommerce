@@ -53,6 +53,7 @@ def register(request):
     context = {
         'form': form,
     }
+
     return render(request, 'accounts/register.html', context)
 
 def login(request):
@@ -70,7 +71,7 @@ def login(request):
             messages.error(request, 'Invalid login credentials')
             return redirect('login')
 
-    return render(request, 'accounts/login.html')
+    return render(request, 'accounts/login.html') 
 
 @login_required(login_url = 'login')
 def logout(request):
@@ -137,5 +138,39 @@ def forgotPassword(request):
 
 
 def resetpassword_validate(request, uidb64, token):
-    return HttpResponse("okay")
+
+    try:
+        uid = urlsafe_base64_decode(uidb64).decode()
+        user = Account._default_manager.get(pk=uid)
+
+    except(TypeError, ValueError, OverflowError, Account.DoesNotExist):
+        user = None
+
+    if user is not None and default_token_generator.check_token(user, token):
+        request.session['uid'] = uid
+        messages.success(request, 'Please reset your password')
+        return redirect('resetpassword')
+    else:
+        messages.error(request, 'This link is expired')
+        return redirect('login')
+    
+def resetpassword(request):
+    if request.method == 'POST':
+        create_password = request.POST['password']
+        confirm_password = request.POST['confirm_password']
+
+        if create_password == confirm_password:
+            uid = request.session.get('uid')
+            user = Account.objects.get(pk = uid)
+            user.set_password(confirm_password)
+            user.save()
+            messages.success(request, "Password successfully changed")
+            return redirect('login')
+        else:
+            messages.error(request, "Passwords do not match")
+            return redirect('resetpassword')
+
+
+    return render(request, 'accounts/resetpassword.html')
+   
 
