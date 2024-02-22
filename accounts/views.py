@@ -166,11 +166,12 @@ def resetpassword(request):
             user.save()
             messages.success(request, "Password successfully changed")
             return redirect('login')
+        
         else:
             messages.error(request, "Passwords do not match")
             return redirect('resetpassword')
-
-
-    return render(request, 'accounts/resetpassword.html')
+        
+    else:
+        return render(request, 'accounts/resetpassword.html')
    
 
