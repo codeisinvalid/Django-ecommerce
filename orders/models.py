@@ -12,6 +12,7 @@ class Payment(models.Model):
 
     def __str__(self):
         return self.payment_id
+     
     
 class Order(models.Model):
     STATUS ={
@@ -43,7 +44,7 @@ class Order(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
-        return self.user.first_name
+        return self.first_name
     
 
 class OrderProduct(models.Model):
@@ -61,7 +62,7 @@ class OrderProduct(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
-        return self.user.first_name
+        return self.product.product_name
 
 
 
