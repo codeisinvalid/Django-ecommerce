@@ -3,6 +3,7 @@ from carts.models import CartItem
 from .forms import OrderForm
 from .models import Order
 import datetime
+from django.http import HttpResponse
 
 def place_order(request, total=0, quantity=0):
     current_user = request.user
@@ -22,7 +23,7 @@ def place_order(request, total=0, quantity=0):
     tax=(2*total)/100
     grand_total=total+tax
     
-    if request.method == 'POST':
+    if request.method =='POST':
         print('if block running')
         form = OrderForm(request.POST)
         if form.is_valid():
@@ -36,7 +37,7 @@ def place_order(request, total=0, quantity=0):
             data.email = form.cleaned_data['email']
             data.address_line_1 = form.cleaned_data['address_line_1']
             data.address_line_2 = form.cleaned_data['address_line_2']
-            data.country = form.cleaned_data['country']
+            data.country = form.cleaned_data['country'] 
             data.state = form.cleaned_data['state']
             data.city = form.cleaned_data['city']
             data.order_note = form.cleaned_data['order_note']
@@ -56,6 +57,7 @@ def place_order(request, total=0, quantity=0):
             data.order_number = order_number
             data.save()
             return redirect('checkout')
+       
     else:
         return redirect('checkout')
 
