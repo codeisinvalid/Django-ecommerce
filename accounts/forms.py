@@ -1,7 +1,6 @@
 from django import forms
 from .models import Account
 
-
 class RegistrationForm(forms.ModelForm):
 
     password = forms.CharField(widget=forms.PasswordInput(attrs={
@@ -33,4 +32,3 @@ class RegistrationForm(forms.ModelForm):
 
         if password != confirm_password:
             raise forms.ValidationError("Password does not match!")
- 

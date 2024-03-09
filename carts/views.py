@@ -6,14 +6,12 @@ from django.http import HttpResponse
 from store.models import Variation
 from django.contrib.auth.decorators import login_required
 
-
 def _cart_id(request):
     cart = request.session.session_key
     if not cart:
         cart = request.session.create()
 
     return cart
-
 
 def add_cart(request, product_id):
     current_user = request.user
@@ -82,12 +80,9 @@ def add_cart(request, product_id):
                 cart_item.variations.add(*product_variation)
             cart_item.save()
 
-        return redirect('cart')
-
-        
-
+        return redirect('cart') 
+    
     # is the user is not authenticated
-
     else:
         product_variation = []
 
@@ -257,6 +252,5 @@ def checkout(request, total=0, quantity=0, cart_items=None):
         'tax':tax,
         'grand_total': grand_total,   
      }
-    
     
     return render(request, 'store/checkout.html', context)

@@ -14,8 +14,6 @@ from django.core.mail import EmailMessage
 from carts.models import Cart, CartItem
 from carts.views import _cart_id
 
-
-from django.http import HttpResponse
 import requests
 
 def register(request):
@@ -33,7 +31,6 @@ def register(request):
             user = Account.objects.create_user(first_name=first_name, last_name=last_name, username=username, email=email, password= password)
             user.phone_number = phone_number
             user.save()
-
 
             # user activation
             current_site = get_current_site(request)
@@ -75,16 +72,13 @@ def login(request):
                 if is_cart_item_exists:
                     cart_item = CartItem.objects.filter(cart=cart)
 
-
                     # Getting the product variations from the cart id
                     product_variation=[]
                     for item in cart_item:
                         variation = item.variations.all()
                         product_variation.append(list(variation))
 
-
                     # Getting the cart items from the user to access his product variations
-
                     cart_item = CartItem.objects.filter(user=user) 
                     ex_var_list = []
                     id = []
@@ -161,14 +155,12 @@ def activate(request, uidb64, token):
 def dashboard(request):
     return render (request, 'accounts/dashboard.html')
 
-
 def forgotPassword(request):
     if request.method == 'POST':
         email = request.POST['email']
 
         if Account.objects.filter(email=email).exists():
             user = Account.objects.get(email__exact=email)
-
 
             # reset password email
             current_site = get_current_site(request)
@@ -191,10 +183,7 @@ def forgotPassword(request):
             messages.error(request, 'Account does not exist')
             return redirect('forgotPassword')
 
-
-
     return render(request, 'accounts/forgotPassword.html')
-
 
 def resetpassword_validate(request, uidb64, token):
 
@@ -232,5 +221,3 @@ def resetpassword(request):
         
     else:
         return render(request, 'accounts/resetpassword.html')
-   
-
