@@ -5,6 +5,10 @@ from .models import Order
 import datetime
 from django.http import HttpResponse
 
+
+def payments(request):
+    return render(request, 'orders/payments.html')
+
 def place_order(request, total=0, quantity=0):
     current_user = request.user
 
@@ -24,13 +28,12 @@ def place_order(request, total=0, quantity=0):
     grand_total=total+tax
     
     if request.method =='POST':
-        print('if block running')
         form = OrderForm(request.POST)
         if form.is_valid():
-            print('form is valid')
 
             # store all the billing information inside order table
             data = Order()
+            data.user = current_user
             data.first_name = form.cleaned_data['first_name']
             data.last_name = form.cleaned_data['last_name']
             data.phone = form.cleaned_data['phone']
