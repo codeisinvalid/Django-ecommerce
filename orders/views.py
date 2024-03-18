@@ -4,9 +4,12 @@ from .forms import OrderForm
 from .models import Order
 import datetime
 from django.http import HttpResponse
+import json
 
 
 def payments(request):
+    body = json.loads(request.body)
+    print(body)
     return render(request, 'orders/payments.html')
 
 def place_order(request, total=0, quantity=0):
