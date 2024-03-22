@@ -1,9 +1,14 @@
 from django.shortcuts import render, redirect
 from carts.models import CartItem
+from store.models import Product
 from .forms import OrderForm
 from .models import Order, Payment,OrderProduct
 import datetime
 import json
+
+from django.template.loader import render_to_string
+from django.core.mail import EmailMessage
+
 
 
 def payments(request):
@@ -36,12 +41,31 @@ def payments(request):
         orderproduct.ordered = True
         orderproduct.save()
         print(orderproduct)
-        
-    # reduce thequantity of the sold products
 
+        cart_item = CartItem.objects.get(id = item.id)
+        product_variation = cart_item.variations.all()
+        orderproduct = OrderProduct.objects.get(id=orderproduct.id)
+        orderproduct.variations.set(product_variation)
+        orderproduct.save()
+
+        # reduce the quantity of the sold products
+        product = Product.objects.get(id = item.product_id)
+        product.stock -= item.quantity
+        product.save()
+        
     # clear the cart
+    CartItem.objects.filter(user=request.user).delete()
 
     # send order received email to the customer
+    mail_subject = "Your order has been successfully received. Keep shopping with us!"
+    message = render_to_string('orders/order_received_email.html', {
+        'user': request.user,
+        'order':order,
+    })
+
+    to_email = request.user.email
+    send_email = EmailMessage(mail_subject, message, to=[to_email])
+    send_email.send()
 
 
     # send order number and transactionID back to sendData() method via JsonResponse
