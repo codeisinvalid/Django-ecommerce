@@ -27,7 +27,6 @@ def payments(request):
     order.is_ordered = True
     order.save()
 
-
     # move the cart items to order products table
     cart_items = CartItem.objects.filter(user= request.user)
     for item in cart_items:
@@ -67,7 +66,6 @@ def payments(request):
     send_email = EmailMessage(mail_subject, message, to=[to_email])
     send_email.send()
 
-
     # send order number and transactionID back to sendData() method via JsonResponse
     data = {
         'order_number':order.order_number,
@@ -75,7 +73,6 @@ def payments(request):
     }
 
     return JsonResponse(data)
-
 
 def place_order(request, total=0, quantity=0):
     current_user = request.user
@@ -166,4 +163,3 @@ def order_complete(request):
     
     except(Payment.DoesNotExist, Order.DoesNotExist):
         return redirect('home')
-    
