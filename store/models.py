@@ -24,7 +24,7 @@ class Product(models.Model):
     def __str__(self):
         return self.product_name
     
-    def average_review(self):
+    def averageReview(self):
         reviews = ReviewRating.objects.filter(product=self, status=True).aggregate(average=Avg('rating'))
         avg=0
         if reviews['average'] is not None:
