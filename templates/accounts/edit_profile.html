@@ -27,7 +27,7 @@
                             <form action="{% url 'edit_profile' %}" method="POST" enctype="multipart/form-data">
                                 {% csrf_token %}
 
-                                <div class="form-row mb-2">
+                                <div class="form-row mb-3">
                                     <div class="form_group col-md-6">
                                         <label>First Name</label>
                                         {{user_form.first_name}}
@@ -39,7 +39,7 @@
                                     </div>
                                 </div>
 
-                                <div class="form-row mb-2">
+                                <div class="form-row mb-3">
                                     <div class="form_group col-md-6">
                                         <label>Phone Number</label>
                                         {{user_form.phone_number}}
@@ -50,17 +50,17 @@
                                     </div>
                                 </div>
 
-                                <div class="form-group mb-2">
+                                <div class="form-group mb-3">
                                     <label>Address Line 1</label>
                                     {{profile_form.address_line_1}}
                                 </div>
 
-                                <div class="form-group mb-2">
+                                <div class="form-group mb-3">
                                     <label>Address Line 2</label>
                                     {{profile_form.address_line_2}}
                                 </div>
 
-                                <div class="form-row mb-2">
+                                <div class="form-row mb-3">
 
                                     <div class="form_group col-md-4">
                                         <label>City</label>
