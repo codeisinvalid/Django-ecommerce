@@ -140,12 +140,12 @@ a:hover {
 }
 
 .hover-bg:hover {
-  background: #3167eb;
+  background: #28a745;
   /* For browsers that do not support gradients */
   /* For Safari 5.1 to 6.0 */
   /* For Opera 11.1 to 12.0 */
   /* For Firefox 3.6 to 15 */
-  background: linear-gradient(to bottom right, #3167eb, #3167eb);
+  background: linear-gradient(to bottom right, #28a745, #28a745);
   /* Standard syntax */
   transition: 0.5s;
 }
@@ -328,7 +328,7 @@ article:after,
 .bg-img {
   overflow: hidden;
   background-color: #ddd;
-  background-image: linear-gradient(135deg, rgba(49, 103, 235, 0.8), rgba(84, 84, 84, 0.9)), url("../images/banners/bg-cpu.jpg");
+  background-image: linear-gradient(135deg, rgba(40, 167, 69, 0.5), rgba(84, 84, 84, 0.9)), url("../images/banners/bg-cpu.jpg");
   background-position: 0px 0px, 50% 50%;
   background-size: auto cover;
 }
@@ -351,7 +351,7 @@ article:after,
   /* For Safari 5.1 to 6.0 */
   /* For Opera 11.1 to 12.0 */
   /* For Firefox 3.6 to 15 */
-  background: linear-gradient(to bottom right, #3167eb, aqua);
+  background: linear-gradient(to bottom right, #28a745, aqua);
   /* Standard syntax */
 }
 .overlay-gradient:hover:before {
@@ -446,12 +446,8 @@ p:last-child {
   vertical-align: middle;
   position: relative;
 }
-.widget-header a {
-  color: #343a40;
-}
-.widget-header a:hover {
-  color: #3167eb;
-}
+
+
 .widget-header i {
   color: #969696;
 }
@@ -467,7 +463,7 @@ p:last-child {
   right: -10px;
 }
 .widget-header:hover i {
-  color: #3167eb;
+  color: #28a745;
 }
 
 /* desktop only */
@@ -480,7 +476,7 @@ p:last-child {
   color: inherit;
 }
 .section-footer ul a:hover {
-  color: #3167eb;
+  color: #28a745;
 }
 .section-footer .logo-footer {
   height: 40px;
@@ -640,7 +636,7 @@ p:last-child {
   color: #212529;
 }
 .itemside a.title:hover {
-  color: #3167eb;
+  color: #28a745;
 }
 
 a.itemside {
@@ -782,7 +778,7 @@ ul.row, ul.row-sm {
 }
 .list-normal li:before {
   content: "•";
-  color: #3167eb;
+  color: #28a745;
   display: inline-block;
   width: 1em;
   margin-left: -1em;
@@ -800,7 +796,7 @@ ul.row, ul.row-sm {
   color: #343a40;
 }
 .list-menu a:hover {
-  color: #3167eb;
+  color: #28a745;
 }
 
 .cols-two {
@@ -823,7 +819,7 @@ a[class*=card] {
   color: initial;
 }
 a[class*=card]:hover .title {
-  color: #3167eb;
+  color: #28a745;
 }
 
 /* BASE STYLE FOR PRODUCT ITEM */
@@ -832,7 +828,7 @@ a[class*=card]:hover .title {
   display: block;
 }
 [class*=card-product] a.title:hover {
-  color: #3167eb;
+  color: #28a745;
 }
 [class*=card-product] .badge {
   top: 10px;
@@ -884,7 +880,7 @@ a[class*=card]:hover .title {
   color: #ccc;
 }
 .card-product-grid .topbar a:hover {
-  color: #3167eb;
+  color: #28a745;
 }
 .card-product-grid .fix-height {
   height: 80px;
@@ -1187,7 +1183,7 @@ a[class*=card]:hover .title {
   margin-top: 7px;
 }
 .tracking-wrap .step.active .icon {
-  background: #3167eb;
+  background: #28a745;
   color: #fff;
 }
 .tracking-wrap .step.active .text {
@@ -1195,7 +1191,7 @@ a[class*=card]:hover .title {
   color: #000;
 }
 .tracking-wrap .step.active:before {
-  background: #3167eb;
+  background: #28a745;
 }
 
 .menu-category {
@@ -1287,8 +1283,8 @@ a[class*=card]:hover .title {
   opacity: 0;
 }
 .checkbox-btn input:checked ~ .btn {
-  border-color: #3167eb;
-  background-color: #3167eb;
+  border-color: #28a745;
+  background-color: #28a745;
   color: #fff;
 }
 
@@ -1304,8 +1300,8 @@ a[class*=card]:hover .title {
   opacity: 0;
 }
 .btn-check input:checked ~ .btn {
-  border-color: #3167eb;
-  background-color: #3167eb;
+  border-color: #28a745;
+  background-color: #28a745;
   color: #fff;
 }
 .btn-check:hover:not(.active) {
@@ -1324,7 +1320,7 @@ a[class*=card]:hover .title {
   left: 18px;
 }
 .js-check.active {
-  border-color: #3167eb;
+  border-color: #28a745;
 }
 .js-check:hover:not(.active) {
   border-color: #ccc;
