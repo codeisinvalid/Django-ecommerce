@@ -5,7 +5,7 @@
 
 
 <!-- ========================= SECTION MAIN ========================= -->
-<section class="section-intro padding-y-sm">
+{% comment %} <section class="section-intro padding-y-sm">
 <div class="container">
 
 <div class="intro-banner-wrap">
@@ -13,23 +13,144 @@
 </div>
 
 </div> <!-- container //  -->
-</section>
+</section> {% endcomment %}
 <!-- ========================= SECTION MAIN END// ========================= -->
 
 <!-- ========================= SECTION  ========================= -->
 <section class="section-name padding-y-sm">
 <div class="container">
 
-<header class="section-heading">
-	<a href="{% url 'store' %}" class="btn btn-outline-primary float-right">See all</a>
-	<h3 class="section-title">Popular products</h3>
-</header><!-- sect-heading -->
+
 
 	
 <div class="row">
 
 
 
+
+	<aside class="col-md-3">
+            
+		<div class="card">
+			<article class="filter-group">
+				<header class="card-header">
+					<a href="#" data-toggle="collapse" data-target="#collapse_1" aria-expanded="true" class="">
+						<i class="icon-control fa fa-chevron-down"></i>
+						<h6 class="title">Categories</h6>
+					</a>
+				</header>
+				<div class="filter-content collapse show" id="collapse_1" style="">
+					<div class="card-body">
+						
+						<ul class="list-menu">
+							<li><a href="{% url 'store' %}">All products</a></li>
+							{% for category in links %}
+							<li><a href="{{ category.get_url }}">{{ category.category_name }}  </a></li>
+							{% endfor %}
+						
+						</ul>
+		
+					</div> <!-- card-body.// -->
+				</div>
+			</article> <!-- filter-group  .// -->
+			<article class="filter-group">
+				<header class="card-header">
+					<a href="#" data-toggle="collapse" data-target="#collapse_4" aria-expanded="true" class="">
+						<i class="icon-control fa fa-chevron-down"></i>
+						<h6 class="title">Sizes </h6>
+					</a>
+				</header>
+				<div class="filter-content collapse show" id="collapse_4" style="">
+					<div class="card-body">
+					  <label class="checkbox-btn">
+						<input type="checkbox">
+						<span class="btn btn-light"> XS </span>
+					  </label>
+		
+					  <label class="checkbox-btn">
+						<input type="checkbox">
+						<span class="btn btn-light"> SM </span>
+					  </label>
+		
+					  <label class="checkbox-btn">
+						<input type="checkbox">
+						<span class="btn btn-light"> LG </span>
+					  </label>
+		
+					  <label class="checkbox-btn">
+						<input type="checkbox">
+						<span class="btn btn-light"> XXL </span>
+					  </label>
+				</div><!-- card-body.// -->
+				</div>
+			</article> <!-- filter-group .// -->
+			
+			<article class="filter-group">
+				<header class="card-header">
+					<a href="#" data-toggle="collapse" data-target="#collapse_3" aria-expanded="true" class="">
+						<i class="icon-control fa fa-chevron-down"></i>
+						<h6 class="title">Price range </h6>
+					</a>
+				</header>
+				<div class="filter-content collapse show" id="collapse_3" style="">
+					<div class="card-body">
+						
+						<div class="form-row">
+						<div class="form-group col-md-6">
+						  <label>Min</label>
+						  <!-- <input class="form-control" placeholder="$0" type="number"> -->
+							  <select class="mr-2 form-control">
+								<option value="0">$0</option>
+								<option value="50">$50</option>
+								<option value="100">$100</option>
+								<option value="150">$150</option>
+								<option value="200">$200</option>
+								<option value="500">$500</option>
+								<option value="1000">$1000</option>
+							</select>
+						</div>
+						<div class="form-group text-right col-md-6">
+						  <label>Max</label>
+							  <select class="mr-2 form-control">
+								<option value="50">$50</option>
+								<option value="100">$100</option>
+								<option value="150">$150</option>
+								<option value="200">$200</option>
+								<option value="500">$500</option>
+								<option value="1000">$1000</option>
+								<option value="2000">$2000+</option>
+							</select>
+						</div>
+						</div> <!-- form-row.// -->
+						<button class="btn btn-block btn-primary">Apply</button>
+					</div><!-- card-body.// -->
+				</div>
+			</article> <!-- filter-group .// -->
+			
+		</div> <!-- card.// -->
+		
+			</aside> <!-- col.// -->
+
+
+	<main class="col-md-9">
+
+
+		{% comment %} <section class="section-intro padding-y-sm"> {% endcomment %}
+{% comment %} <div class="container"> {% endcomment %}
+
+<div class="intro-banner-wrap">
+	<img src="{% static 'images/banners/cover.jpg' %}" class="img-fluid rounded">
+</div>
+
+{% comment %} </div> <!-- container //  --> {% endcomment %}
+{% comment %} </section> {% endcomment %}
+
+		
+
+			<header class="section-heading">
+				<a href="{% url 'store' %}" class="btn btn-outline-primary float-right">See all</a>
+				<h3 class="section-title">Popular products</h3>
+			</header><!-- sect-heading -->
+			<div class="row">
 	{% for product in products %}
 	<div class="col-md-3">
 		<div class="card card-product-grid">
@@ -56,6 +177,8 @@
 		</div>
 	</div> <!-- col.// -->
 	{% endfor %}
+	</div>
+	</main>
 
 	
 	
